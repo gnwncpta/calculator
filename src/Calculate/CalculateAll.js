@@ -36,26 +36,27 @@ import { log } from '../Fazt/Fazt';
 //     }
 // }
 
+// Masih tidak efisien butuh kode/logic yang efisien
 const calculateAll = (numbers) => {
 
-    let str = numbers.toString(); // <- jadikan string
-    let removeComa = str.split(","); // <- jadikan array
-    let merge = removeComa.reduce((acc, val) => acc + val ) // <- gabungkan
+    // jadikan string
+    let str = numbers.toString(); 
+    // hapus komanya (memakai split itu akan menjadikannya array)
+    let removeComa = str.split(","); 
+    // gabungkan string menjadi satu
+    let merge = removeComa.reduce((acc, val) => acc + val );
 
+    // jika var merge mengandung string + maka
     if(merge.includes("+")){
+        // pisahkan berdasarkan +
         let separate = merge.split('+');
+        // convert dari `String` ke bentuk `Integer`
         let convertInteger = separate.map(val => parseInt(val));
+        // kalkulasi semua 
         let hitung = convertInteger.reduce((acc, val) => acc + val);
         return hitung;
     }
-
-    // for(let i = 0; i < str.length; i++){
-    //     if(str[i] == '+'){
-    //         angkas.push(parseInt(str.slice(0, i)));
-    //     } 
-    // }
-
-    // log(angkas);
+    
 }
 
 export default calculateAll;
