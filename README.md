@@ -1,6 +1,6 @@
 # Calculator
 
-> Merge Numbers
+> Merge Numbers (temp code)
 > https://es6console.com/kpa3ecj9/
 
 
