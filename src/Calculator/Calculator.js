@@ -30,8 +30,8 @@ buttons.forEach(button => {
         
         // Jika yang diklik adalah sama dengan maka kalkulasi
         if(e.target.classList.contains('equals')){
-            calculateAll(numbers);
-        
+            p.innerHTML = calculateAll(numbers);
+            
         // tapi selain tombol = yang di klik 
         } else {
 

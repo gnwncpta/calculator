@@ -40,16 +40,14 @@ const calculateAll = (numbers) => {
 
     let str = numbers.toString(); // <- jadikan string
     let removeComa = str.split(","); // <- jadikan array
-    let merge = removeComa.reduce((acc, val) => {
-        return acc + val; // <- gabungkan menjadi string
-    });
-    log(merge)
-    log(merge.split('+')); // <- pisah angkanya
-    
-    let operator = [];
-    // if(merge.split('+')){
+    let merge = removeComa.reduce((acc, val) => acc + val ) // <- gabungkan
 
-    // }
+    if(merge.includes("+")){
+        let separate = merge.split('+');
+        let convertInteger = separate.map(val => parseInt(val));
+        let hitung = convertInteger.reduce((acc, val) => acc + val);
+        return hitung;
+    }
 
     // for(let i = 0; i < str.length; i++){
     //     if(str[i] == '+'){
