@@ -31,6 +31,11 @@ buttons.forEach(button => {
         // Jika yang diklik adalah sama dengan maka kalkulasi
         if(e.target.classList.contains('equals')){
             p.innerHTML = calculateAll(numbers);
+            p.classList.add('hidden');
+
+            setTimeout(() => {
+                p.classList.remove('hidden')
+            }, 100)
             
         // tapi selain tombol = yang di klik 
         } else {
@@ -41,7 +46,7 @@ buttons.forEach(button => {
 
             // dan setor ke Array nilainya untuk di kalkulasi
             // jika yang di klik adalah operator expression push
-            if(number === "+" || number === "-" || number === "x" || number === "/"){
+            if(number === "+" || number === "-" || number === "*" || number === "/"){
                 numbers.push(number);
             } else {
                 numbers.push(parseInt(number)); // masukkan nilai ke array menjadi tipe number

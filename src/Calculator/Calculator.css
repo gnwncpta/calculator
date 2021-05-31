@@ -13,16 +13,34 @@ body {
     justify-content: center;
 }
 
+/* Pre-served class */
+.hidden {
+    display: none;
+}
+
+.btn-white {
+    background-color: white;
+}
+
+.text-dark {
+    color:rgb(20, 20, 20);
+}
+
+.text-white {
+    color: white;
+}
+
+.dark {
+    background-color: rgb(20, 20, 20);
+}
+
 main {
     margin: auto;
     width: 350px;
     padding: 30px;
     box-sizing: border-box;
+    border-radius: 13px;
     border: 1px solid rgb(191, 191, 191);
-}
-
-.dark {
-    background-color: rgb(20, 20, 20);
 }
 
 .mode {
@@ -34,15 +52,6 @@ main {
     box-sizing: border-box;
     border-radius: 50px;
     background-color: rgb(20, 20, 20);
-}
-
-.white-btn {
-    background-color: white;
-    color: rgb(20, 20, 20);
-}
-
-.white-text {
-    color: white;
 }
 
 .display {
@@ -81,9 +90,8 @@ main {
     font-size: 1em;
     cursor: pointer;
     border: none;
-    border-radius: 3px;
-    border: 1px solid gray;
-    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    background-color: rgb(234, 234, 234);
 }
 
 .button-grid .operator {

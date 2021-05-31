@@ -3,8 +3,9 @@ import { mode, p } from '../Calculator/Calculator';
 // Toggle Dark Mode
 const ToggleDark = () => {
     document.body.classList.toggle('dark');
-    mode.classList.toggle('white-btn');
-    p.classList.toggle('white-text');
+    mode.classList.toggle('btn-white');
+    mode.classList.toggle('text-dark');
+    p.classList.add('text-white');
     
     if(mode.textContent == 'Dark Mode'){
         mode.textContent = 'Light Mode';
