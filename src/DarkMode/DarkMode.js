@@ -5,7 +5,7 @@ const ToggleDark = () => {
     document.body.classList.toggle('dark');
     mode.classList.toggle('btn-white');
     mode.classList.toggle('text-dark');
-    p.classList.add('text-white');
+    p.classList.toggle('text-white');
     
     if(mode.textContent == 'Dark Mode'){
         mode.textContent = 'Light Mode';
