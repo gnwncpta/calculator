@@ -1,3 +1,7 @@
+:root {
+    --dark: rgb(20, 20, 20);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -13,50 +17,113 @@ body {
     justify-content: center;
 }
 
-/* Pre-served class */
-.hidden {
-    display: none;
+/* Additional Class */
+.hidden { display: none; }
+
+/* Button */
+.btn-white { background-color: rgb(255, 255, 255); }
+.btn-white-1 { background-color: rgb(234, 234, 234); }
+.btn-dark { background-color: rgb(20, 20, 20); }
+
+/* Text */
+.text-dark { color:rgb(20, 20, 20); }
+.text-white { color: rgb(255, 255, 255); }
+
+/* Background */
+.bg-white { background-color: white; }
+.bg-white-1 { background-color: rgb(234, 234, 234) }
+.bg-dark { background-color: rgb(20, 20, 20); }
+
+/* Border */
+.border-1-white { border: 1px solid rgb(196, 196, 196); }
+
+/* Theme */
+.dark { background-color: rgb(20, 20, 20); }
+
+@keyframes blackAnim {
+    0% { opacity: 0; }
+    100% { opacity: 100%; }
 }
 
-.btn-white {
-    background-color: white;
+.black-overlay {
+    width: 100%;
+    height: 100%;
+    opacity: .8;
+    background-color: black;
+    position: absolute;
+    animation: blackAnim .2s ease-in-out;
 }
 
-.text-dark {
-    color:rgb(20, 20, 20);
+@keyframes modalInfo {
+    0% { top: -300px; opacity: 0; }
+
+    100% { top: 0px; opacity: 1; }
 }
 
-.text-white {
-    color: white;
+.modal-container {
+    width: 500px;
+    height: 300px;
+    padding: 30px;
+    position: absolute;
+    border-radius: 20px;
+    box-sizing: border-box;
+    animation: modalInfo .8s ease-out;
+    z-index: 2;
 }
 
-.dark {
-    background-color: rgb(20, 20, 20);
+.modal-info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
 }
 
+.modal-info header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-info header h1 {
+    text-align: center;
+}
+
+.modal-info button {
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 9px;
+}
+
+.modal-info button:hover {
+    color: rgb(20, 20, 20);
+    background-color: rgb(219, 219, 219);
+}
+
+/* Container => Main */
 main {
     margin: auto;
     width: 350px;
-    padding: 30px;
+    /* padding: 30px; */
     box-sizing: border-box;
-    border-radius: 13px;
-    border: 1px solid rgb(191, 191, 191);
+    background-color: var(--dark);
 }
 
 .mode {
     margin-top: 100px;
     cursor: pointer;
-    color: white;
     border: none;
     padding: 10px 20px;
     box-sizing: border-box;
     border-radius: 50px;
-    background-color: rgb(20, 20, 20);
 }
 
 .display {
-    border: 1px solid rgb(191, 191, 191);
-    height: 70px;
+    height: 90px;
     padding: 10px;
     box-sizing: border-box;
     display: flex;
@@ -78,24 +145,28 @@ main {
 }
 
 .button-grid {
-    margin-top: 30px;
-
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 40px);
-    gap: 10px;
+    grid-template-rows: repeat(5, 70px);
 }
 
 .button-grid button {
     font-size: 1em;
     cursor: pointer;
     border: none;
-    border-radius: 10px;
-    background-color: rgb(234, 234, 234);
+    /* border-radius: 10px; */
+}
+
+.button-grid button.active:hover {
+    background-color: rgb(195, 195, 195);
 }
 
 .button-grid .operator {
     background-color: rgb(219, 219, 219);
+}
+
+.button-grid .operator:hover {
+    background-color: rgb(200, 200, 200);
 }
 
 .button-grid .active:active {
@@ -111,7 +182,15 @@ main {
     background-color: rgb(30, 136, 242);
 }
 
+.button-grid .equals:hover {
+    background-color: rgb(26, 118, 210);
+}
+
 .button-grid .clear {
     background-color: orange;
     border: none;
+}
+
+.button-grid .clear:hover {
+    background-color: rgb(224, 145, 0);
 }

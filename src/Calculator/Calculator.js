@@ -1,4 +1,4 @@
-import './Calculator.css';
+// import './Calculator.css';
 import { $, log } from '../Fazt/Fazt';
 import ToggleDark from '../DarkMode/DarkMode';
 import calculateAll from '../Calculate/CalculateAll';
@@ -8,11 +8,20 @@ let numbers = [];
 
 // DOM Selection
 const buttons = $.querySelectorAll('.button-grid button');
-const p = $.querySelector('.display p');
+const display = $.querySelector('.display');
+const displayP = $.querySelector('.display p');
 const clear = $.querySelector('.clear');
 const mode = $.querySelector('.mode');
+const buttonGrid = $.querySelector('.button-grid');
+const numbersButton = $.querySelectorAll('.button-grid .active');
+const blackOverlay = $.querySelector('.black-overlay');
+const modalContainer = $.querySelector('.modal-container');
+const modalInfo = $.querySelector('.modal-container .modal-info');
+const modalInfoButton = $.querySelector('.modal-container .modal-info button');
 
-// jika localStorage memiliki mode dark maka atur menjadi tampilan dark mode
+
+/* jika localStorage memiliki mode dark
+maka atur tampilan menjadi dark mode */
 if(localStorage.getItem('mode') == 'dark'){
     ToggleDark();
 }
@@ -22,27 +31,37 @@ mode.addEventListener('click', () => {
     ToggleDark();
 });
 
+modalInfoButton.addEventListener('click', (e) => {
+    e.target.parentElement.parentElement.classList.add('hidden');
+    blackOverlay.classList.add('hidden');
+});
+
 // Looping semua button untuk nantinya di select
 buttons.forEach(button => {
 
     // jika ada button yang di select 
     button.addEventListener('click', (e) => {
         
-        // Jika yang diklik adalah sama dengan maka kalkulasi
+        // Jika yang diklik adalah sama dengan ( = ) maka kalkulasi
         if(e.target.classList.contains('equals')){
-            p.innerHTML = calculateAll(numbers);
-            p.classList.add('hidden');
-
-            setTimeout(() => {
-                p.classList.remove('hidden')
-            }, 100)
+            if(numbers.length == 0){
+                blackOverlay.classList.remove('hidden');
+                modalContainer.classList.remove('hidden');
+            } else {
+                displayP.innerHTML = calculateAll(numbers);
+                displayP.classList.add('hidden');
+    
+                setTimeout(() => {
+                    displayP.classList.remove('hidden');
+                }, 100);
+            }
             
         // tapi selain tombol = yang di klik 
         } else {
 
             // tampilkan ke DOM
             let number = e.target.textContent; // <- berisi angka, operator
-            p.textContent += number; // <- tampilkan ke DOM
+            displayP.textContent += number; // <- tampilkan ke DOM
 
             // dan setor ke Array nilainya untuk di kalkulasi
             // jika yang di klik adalah operator expression push
@@ -59,7 +78,7 @@ buttons.forEach(button => {
 // Reset Calculator
 clear.addEventListener('click', () => {
     numbers.length = 0;
-    p.innerHTML = '';
+    displayP.innerHTML = '';
 })
 
-export { mode, p }
+export { mode, displayP, display, buttonGrid, numbersButton, modalContainer, modalInfo, modalInfoButton }

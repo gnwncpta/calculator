@@ -5,15 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <link rel="icon" href="https://p.kindpng.com/picc/s/77-772110_calculator-icon-png-calculator-icon-transparent-png.png">
+    <!-- <link rel="icon" href="https://p.kindpng.com/picc/s/77-772110_calculator-icon-png-calculator-icon-transparent-png.png"> -->
 </head>
 <body>
 
-    <button class="mode">Dark Mode</button>
+    
+    <div class="modal-container bg-dark hidden">
+        <div class="modal-info text-white">
+            
+            <header>
+                <h1>Put the damn Number Fool!</h1>
+                <p>Are you trying to joke with my calculator ???</p>
+            </header>
+            
+            <button class="btn-white text-dark">Close</button>
+            
+        </div>
+    </div>
+
+    <div class="black-overlay hidden"></div>
+    
+    <button class="mode btn-dark text-white">Dark Mode</button>
 
     <main class="calculator-container">
         <!-- this div will display the calculate -->
-        <div class="display">
+        <div class="display text-dark bg-white-1">
             <p></p>
         </div>
 
@@ -33,7 +49,7 @@
             <button class="active">3</button>
             <button class="active">0</button>
             <button class="active">.</button>
-            <button class="clear active">C</button>
+            <button class="clear">C</button>
             <button class="equals">=</button>
         </div>
     </main>
