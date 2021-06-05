@@ -1,11 +1,11 @@
-import { mode, displayP, display, buttonGrid, numbersButton, modalContainer, modalInfo, modalInfoButton } from '../Calculator/Calculator';
-import { log } from '../Fazt/Fazt';
+import { mode, displayP, display, numbersButton, modalContainer, modalInfo, modalInfoButton } from '../Calculator/Calculator';
+import { log as print } from '../Fazt/Fazt';
 
 // Toggle Dark Mode
 const ToggleDark = () => {
 
     // body changes the background-color
-    document.body.classList.toggle('dark');
+    document.body.classList.toggle('darkBG');
 
     // mode button changes the theme
     mode.classList.toggle('text-white');
@@ -18,7 +18,7 @@ const ToggleDark = () => {
     display.classList.toggle('bg-white-1');
     display.classList.toggle('text-white');
     display.classList.toggle('bg-dark');
-    display.classList.toggle('border-1-white');
+    // display.classList.toggle('border-1-white');
     // p of the mode display
     displayP.classList.toggle('text-white');
 
@@ -33,12 +33,13 @@ const ToggleDark = () => {
     modalInfoButton.classList.toggle('text-white');
 
     // Button Grid
-    buttonGrid.classList.toggle('border-1-white');
+    // buttonGrid.classList.toggle('border-1-white');
 
     // changes the buttons of calculator
     numbersButton.forEach(isi => {
         isi.classList.toggle('btn-dark');
         isi.classList.toggle('text-white');
+        isi.classList.toggle('dark-mode');
     });
     
     // Changes the text for user experience

@@ -10,7 +10,7 @@
 
 body {
     height: 100vh;
-    transition: .5s all;
+    transition: .3s all;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,7 +38,7 @@ body {
 .border-1-white { border: 1px solid rgb(196, 196, 196); }
 
 /* Theme */
-.dark { background-color: rgb(20, 20, 20); }
+.darkBG { background-color: rgb(25, 25, 25); }
 
 @keyframes blackAnim {
     0% { opacity: 0; }
@@ -129,6 +129,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    transition: .3s all;
 }
 
 .display p {
@@ -138,6 +139,7 @@ main {
     text-align: right;
     overflow: hidden;
     letter-spacing: 2px;
+    transition: .3s all;
 }
 
 .button-grid .dark-button {
@@ -154,11 +156,16 @@ main {
     font-size: 1em;
     cursor: pointer;
     border: none;
+    transition: .3s all;
     /* border-radius: 10px; */
 }
 
 .button-grid button.active:hover {
     background-color: rgb(195, 195, 195);
+}
+
+.button-grid button.active.dark-mode:hover {
+    background-color: rgb(45, 45, 45);
 }
 
 .button-grid .operator {

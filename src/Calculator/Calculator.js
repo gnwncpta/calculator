@@ -1,24 +1,24 @@
-// import './Calculator.css';
-import { $, log } from '../Fazt/Fazt';
+import './Calculator.css';
+import { $, log as print } from '../Fazt/Fazt';
 import ToggleDark from '../DarkMode/DarkMode';
-import calculateAll from '../Calculate/CalculateAll';
-
-// tempat untuk menyimpan angka dan operator
-let numbers = [];
+import { add, count } from '../Count/Count';
 
 // DOM Selection
 const buttons = $.querySelectorAll('.button-grid button');
 const display = $.querySelector('.display');
 const displayP = $.querySelector('.display p');
-const clear = $.querySelector('.clear');
 const mode = $.querySelector('.mode');
 const buttonGrid = $.querySelector('.button-grid');
-const numbersButton = $.querySelectorAll('.button-grid .active');
+const numbersButton = $.querySelectorAll('.button-grid .number');
+const operatorButton = $.querySelectorAll('.button-grid .operator');
+const clearButton = $.querySelector('.clear');
+const calculateButton = $.querySelector('.button-grid button.equals');
 const blackOverlay = $.querySelector('.black-overlay');
 const modalContainer = $.querySelector('.modal-container');
 const modalInfo = $.querySelector('.modal-container .modal-info');
 const modalInfoButton = $.querySelector('.modal-container .modal-info button');
 
+// print(calculateButton)
 
 /* jika localStorage memiliki mode dark
 maka atur tampilan menjadi dark mode */
@@ -36,49 +36,52 @@ modalInfoButton.addEventListener('click', (e) => {
     blackOverlay.classList.add('hidden');
 });
 
-// Looping semua button untuk nantinya di select
-buttons.forEach(button => {
+// tempat untuk menyimpan angka dan operator
+let numbers = [];
 
-    // jika ada button yang di select 
-    button.addEventListener('click', (e) => {
-        
-        // Jika yang diklik adalah sama dengan ( = ) maka kalkulasi
-        if(e.target.classList.contains('equals')){
-            if(numbers.length == 0){
-                blackOverlay.classList.remove('hidden');
-                modalContainer.classList.remove('hidden');
-            } else {
-                displayP.innerHTML = calculateAll(numbers);
-                displayP.classList.add('hidden');
-    
-                setTimeout(() => {
-                    displayP.classList.remove('hidden');
-                }, 100);
-            }
-            
-        // tapi selain tombol = yang di klik 
-        } else {
-
-            // tampilkan ke DOM
-            let number = e.target.textContent; // <- berisi angka, operator
-            displayP.textContent += number; // <- tampilkan ke DOM
-
-            // dan setor ke Array nilainya untuk di kalkulasi
-            // jika yang di klik adalah operator expression push
-            if(number === "+" || number === "-" || number === "*" || number === "/"){
-                numbers.push(number);
-            } else {
-                numbers.push(parseInt(number)); // masukkan nilai ke array menjadi tipe number
-            }
-
-        }
+// if numbers button is clicked.
+numbersButton.forEach(number => {
+    number.addEventListener('click', (e) => {
+        let value = e.target.textContent;
+        displayP.textContent += value;
+        numbers.push(parseInt(value));
     });
-})
+});
+
+// if some operators is clicked.
+operatorButton.forEach(operator => {
+    operator.addEventListener('click', (e) => {
+        let operator = e.target.textContent;
+        displayP.textContent += operator;
+        numbers.push(operator);
+    });
+});
 
 // Reset Calculator
-clear.addEventListener('click', () => {
+clearButton.addEventListener('click', () => {
     numbers.length = 0;
     displayP.innerHTML = '';
-})
+});
+
+// if calculate button is clicked.
+calculateButton.addEventListener('click', () => {
+    if(numbers.length == 0){
+        print('the numbers is empty!');
+        blackOverlay.classList.remove('hidden');
+        modalContainer.classList.remove('hidden');
+    } else {
+        let result = count(numbers);
+        print(result);
+        displayP.innerHTML = result;
+        displayP.classList.add('hidden');
+
+        setTimeout(() => {
+            displayP.classList.remove('hidden');
+        }, 100);
+
+        numbers.length = 0;
+        numbers.push(result);
+    }
+});
 
 export { mode, displayP, display, buttonGrid, numbersButton, modalContainer, modalInfo, modalInfoButton }

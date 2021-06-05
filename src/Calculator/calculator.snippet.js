@@ -40,3 +40,40 @@ display.appendChild(numberDOM);
 //         }
 //     }
 // }
+
+
+// =>  Calculator.js file
+
+// Looping semua button untuk nantinya di select
+buttons.forEach(button => {
+    // jika ada button yang di select 
+    button.addEventListener('click', (e) => {
+        // Jika yang diklik adalah sama dengan ( = ) maka kalkulasi
+        if(e.target.classList.contains('equals')){
+            if(numbers.length == 0){
+                blackOverlay.classList.remove('hidden');
+                modalContainer.classList.remove('hidden');
+            } else {
+                displayP.innerHTML = calculateAll(numbers);
+                displayP.classList.add('hidden');
+    
+                setTimeout(() => {
+                    displayP.classList.remove('hidden');
+                }, 100);
+            }    
+        // tapi selain tombol = yang di klik 
+        } else {
+            // tampilkan ke DOM
+            let number = e.target.textContent; // <- berisi angka, operator
+            displayP.textContent += number; // <- tampilkan ke DOM
+
+            // dan setor ke Array nilainya untuk di kalkulasi
+            // jika yang di klik adalah operator expression push
+            if(number === "+" || number === "-" || number === "*" || number === "/"){
+                numbers.push(number);
+            } else {
+                numbers.push(parseInt(number)); // masukkan nilai ke array menjadi tipe number
+            }
+        }
+    });
+});
