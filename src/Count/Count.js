@@ -36,11 +36,13 @@ const add = (numbers) => {
 
 // Masih tidak efisien butuh kode/logic yang efisien
 const count = (numbers) => {
-    let theNum = [];
-    let theOpt = [];
+    let theNum = []; // 7, 7, 2
+    let theOpt = []; // +, *
 
     let string = stringify(numbers);
+    print(string);
     let angka = string.split('');
+    print(angka);
     angka.forEach(isi => {
         if(isi === "*" || isi === "/" || isi === "+" || isi === '-'){
             theOpt.push(isi);
@@ -49,20 +51,25 @@ const count = (numbers) => {
         }
     });
 
-    for(let i = 0; i < theNum.length; i++){
-        if(theOpt[i] == "*"){
-            // then operator is *
-        } else if(theOpt[i] == '/'){
-            // then operator is /
-        } else if(theOpt[i] == '+'){
-            // then operator is +
-        } else if(theOpt[i] == '-'){
-            // then operator is -
-        }
-        let result = `${theNum[i]}`
-    }
+    print(theNum, theOpt);
 
-    return string;
+    // theNum = [7, 7, 2]
+    // theOpt = ['+', '*']
+
+    let hasil = 0; // 14 + 14
+    for(let i = 0; i < theNum.length; i++){ // index: 0
+        if(theOpt[i] == "*"){
+            hasil += theNum[i] * theNum[i+1];
+        } else if(theOpt[i] == "/") {
+            hasil += theNum[i] / theNum[i+1];
+        } else if(theOpt[i] == "+") {
+            hasil += theNum[i] + theNum[i+1];
+        } else if(theOpt[i] == "-") {
+            hasil += theNum[i] - theNum[i+1];
+        }
+    }
+    
+    return hasil;
 }
 
 export { add, count }

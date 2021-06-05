@@ -81,6 +81,7 @@ calculateButton.addEventListener('click', () => {
 
         numbers.length = 0;
         numbers.push(result);
+        print(numbers);
     }
 });
 

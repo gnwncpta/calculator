@@ -77,3 +77,20 @@ buttons.forEach(button => {
         }
     });
 });
+
+
+// => Count.js
+let hasil = 7 + 7 - 7;
+
+for(let i = 0; i < theNum.length; i++){
+    if(theOpt[i] == "*"){
+        // then operator is *
+    } else if(theOpt[i] == '/'){
+        // then operator is /
+    } else if(theOpt[i] == '+'){
+        // then operator is +
+    } else if(theOpt[i] == '-'){
+        // then operator is -
+    }
+    let result = `${theNum[i]}`;
+}
