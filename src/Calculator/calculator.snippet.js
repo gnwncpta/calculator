@@ -94,3 +94,13 @@ for(let i = 0; i < theNum.length; i++){
     }
     let result = `${theNum[i]}`;
 }
+
+// => Count.js (input number to array)
+angka.forEach(isi => {
+    if(isi === "*" || isi === "/" || isi === "+" || isi === '-'){
+        theOpt.push(isi);
+        print(theOpt)
+    } else {
+        theNum.push(parseInt(isi));
+    }
+});

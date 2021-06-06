@@ -19,6 +19,7 @@ const ToggleDark = () => {
     display.classList.toggle('text-white');
     display.classList.toggle('bg-dark');
     // display.classList.toggle('border-1-white');
+    
     // p of the mode display
     displayP.classList.toggle('text-white');
 

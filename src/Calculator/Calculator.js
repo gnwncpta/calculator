@@ -71,7 +71,7 @@ calculateButton.addEventListener('click', () => {
         modalContainer.classList.remove('hidden');
     } else {
         let result = count(numbers);
-        print(result);
+        // print(result);
         displayP.innerHTML = result;
         displayP.classList.add('hidden');
 
@@ -81,7 +81,7 @@ calculateButton.addEventListener('click', () => {
 
         numbers.length = 0;
         numbers.push(result);
-        print(numbers);
+        // print(`Array numbers = ${numbers}`);
     }
 });
 
